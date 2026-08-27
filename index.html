@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Al Manar Group — Umrah, Tours &amp; Trade Facilitation</title>
+<meta name="description" content="Umrah packages, hotel bookings, Saudi &amp; world tours, plus travel documentation and import/export facilitation — one company, every step handled.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ============ TOKENS ============ */
+  :root{
+    --ink:#10241B;          /* deep pine-black, primary dark */
+    --ink-soft:#1A3327;
+    --emerald:#1F5D45;      /* brand green */
+    --emerald-deep:#153E2E;
+    --brass:#B08A4E;        /* gold/brass accent */
+    --brass-light:#D8B87E;
+    --seal:#8C2F1B;         /* wax-seal red, used only for stamp accents */
+    --sand:#F1EAD9;         /* light section bg */
+    --cream:#FBF8F1;        /* card bg */
+    --paper:#F7F2E7;
+    --text:#182018;
+    --text-soft:#4B564D;
+    --text-on-dark:#EFE9D8;
+    --text-on-dark-soft:#B9C4B7;
+    --line:rgba(16,36,27,0.14);
+    --line-on-dark:rgba(239,233,216,0.18);
+
+    --display:'Fraunces', serif;
+    --body:'Inter', system-ui, sans-serif;
+    --mono:'JetBrains Mono', monospace;
+
+    --radius:2px;
+    --container:1180px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:var(--body);
+    color:var(--text);
+    background:var(--sand);
+    -webkit-font-smoothing:antialiased;
+    line-height:1.5;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;}
+  h1,h2,h3,h4{font-family:var(--display);margin:0;font-weight:600;letter-spacing:-0.01em;}
+  p{margin:0;}
+  .wrap{max-width:var(--container);margin:0 auto;padding:0 28px;}
+
+  :focus-visible{outline:2px solid var(--brass);outline-offset:3px;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important;scroll-behavior:auto !important;}
+  }
+
+  /* ============ UTILITIES ============ */
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--brass);
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow::before{
+    content:'';
+    width:22px;height:1px;background:var(--brass);
+    display:inline-block;
+  }
+  .btn{
+    font-family:var(--body);
+    font-weight:600;
+    font-size:14.5px;
+    padding:13px 24px;
+    border-radius:var(--radius);
+    border:1px solid transparent;
+    cursor:pointer;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    text-decoration:none;
+    transition:transform .18s ease, background .18s ease, color .18s ease, border-color .18s ease;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn-primary{background:var(--brass);color:var(--ink);}
+  .btn-primary:hover{background:var(--brass-light);}
+  .btn-ghost-dark{border-color:var(--line-on-dark);color:var(--text-on-dark);}
+  .btn-ghost-dark:hover{border-color:var(--brass);color:var(--brass-light);}
+  .btn-ghost-light{border-color:var(--line);color:var(--ink);}
+  .btn-ghost-light:hover{border-color:var(--emerald);color:var(--emerald);}
+
+  .reveal{opacity:0; transform:translateY(18px); transition:opacity .7s ease, transform .7s ease;}
+  .reveal.is-visible{opacity:1; transform:translateY(0);}
+
+  /* dashed tear-line, used across the site as the document/ticket motif */
+  .tear{
+    height:0;
+    border-bottom:1.5px dashed var(--line);
+    position:relative;
+  }
+  .tear::before,.tear::after{
+    content:'';
+    position:absolute; top:-8px;
+    width:16px;height:16px;border-radius:50%;
+    background:var(--sand);
+  }
+  .tear::before{left:-8px;}
+  .tear::after{right:-8px;}
+
+  /* ============ NAV ============ */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    background:rgba(16,36,27,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line-on-dark);
+  }
+  nav.wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    height:74px;
+  }
+  .logo{
+    display:flex; align-items:center; gap:11px;
+    font-family:var(--display);
+    color:var(--text-on-dark);
+    font-size:19px;
+    font-weight:600;
+    text-decoration:none;
+    letter-spacing:0.01em;
+  }
+  .logo-mark{
+    width:34px;height:34px;
+    border:1px solid var(--brass);
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-family:var(--mono);
+    font-size:11px;
+    color:var(--brass-light);
+    flex-shrink:0;
+  }
+  .logo-sub{
+    display:block;
+    font-family:var(--mono);
+    font-size:9.5px;
+    letter-spacing:0.12em;
+    color:var(--text-on-dark-soft);
+    font-weight:400;
+    text-transform:uppercase;
+    margin-top:2px;
+  }
+  .nav-links{
+    display:flex; align-items:center; gap:34px;
+    list-style:none; margin:0; padding:0;
+  }
+  .nav-links a{
+    text-decoration:none;
+    color:var(--text-on-dark-soft);
+    font-size:14px; font-weight:500;
+    transition:color .18s ease;
+  }
+  .nav-links a:hover{color:var(--brass-light);}
+  .nav-cta{display:flex; align-items:center; gap:18px;}
+  .nav-toggle{display:none;}
+
+  @media (max-width:880px){
+    .nav-links{display:none;}
+    .nav-cta .btn-ghost-dark{display:none;}
+  }
+
+  /* ============ HERO ============ */
+  .hero{
+    position:relative;
+    background:var(--ink);
+    color:var(--text-on-dark);
+    padding:170px 0 110px;
+    overflow:hidden;
+  }
+  .hero-route{
+    position:absolute; inset:0;
+    opacity:0.5;
+    pointer-events:none;
+  }
+  .hero-route path{
+    fill:none;
+    stroke:var(--brass);
+    stroke-width:1;
+    stroke-dasharray:4 7;
+    animation:dash 40s linear infinite;
+  }
+  @keyframes dash{ to{ stroke-dashoffset:-500; } }
+  .hero-route circle{ fill:var(--brass-light); }
+
+  .hero-inner{
+    position:relative; z-index:2;
+    display:grid;
+    grid-template-columns:1.15fr 0.85fr;
+    gap:60px;
+    align-items:end;
+  }
+  .hero h1{
+    font-size:clamp(38px,5vw,64px);
+    line-height:1.06;
+    color:var(--text-on-dark);
+    margin:22px 0 26px;
+  }
+  .hero h1 em{
+    font-style:italic;
+    color:var(--brass-light);
+  }
+  .hero p.lede{
+    font-size:17px;
+    color:var(--text-on-dark-soft);
+    max-width:46ch;
+    margin-bottom:36px;
+  }
+  .hero-actions{display:flex; gap:14px; flex-wrap:wrap;}
+
+  .hero-manifest{
+    background:var(--cream);
+    color:var(--text);
+    border-radius:var(--radius);
+    padding:26px 26px 22px;
+    position:relative;
+    box-shadow:0 30px 60px -20px rgba(0,0,0,0.45);
+  }
+  .hero-manifest::after{
+    content:'';
+    position:absolute; inset:8px;
+    border:1px solid var(--line);
+    pointer-events:none;
+  }
+  .manifest-row{
+    display:flex; justify-content:space-between;
+    font-family:var(--mono); font-size:11px;
+    color:var(--text-soft); text-transform:uppercase; letter-spacing:0.06em;
+    margin-bottom:16px;
+  }
+  .manifest-title{
+    font-family:var(--display); font-size:22px; margin-bottom:6px;
+  }
+  .manifest-sub{font-size:13.5px; color:var(--text-soft); margin-bottom:18px;}
+  .manifest-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:14px 18px;
+    padding-top:16px; border-top:1px dashed var(--line);
+  }
+  .manifest-grid div{font-size:12.5px;}
+  .manifest-grid .k{font-family:var(--mono); color:var(--text-soft); text-transform:uppercase; font-size:10px; letter-spacing:0.08em; display:block; margin-bottom:3px;}
+  .manifest-seal{
+    position:absolute; right:22px; bottom:20px;
+    width:56px;height:56px; border-radius:50%;
+    border:1.5px solid var(--seal);
+    color:var(--seal);
+    display:flex;align-items:center;justify-content:center;
+    font-family:var(--mono); font-size:8.5px; text-align:center; line-height:1.2;
+    transform:rotate(-14deg);
+    opacity:0.85;
+  }
+
+  @media (max-width:900px){
+    .hero-inner{grid-template-columns:1fr; }
+    .hero{padding:150px 0 70px;}
+  }
+
+  /* ============ STATS STRIP ============ */
+  .stats{
+    background:var(--emerald-deep);
+    color:var(--text-on-dark);
+  }
+  .stats .wrap{
+    display:grid; grid-template-columns:repeat(4,1fr);
+    padding:34px 28px;
+  }
+  .stat{
+    padding:0 22px;
+    border-left:1px solid var(--line-on-dark);
+  }
+  .stat:first-child{border-left:none; padding-left:0;}
+  .stat .num{font-family:var(--mono); font-size:26px; color:var(--brass-light); font-weight:500;}
+  .stat .label{font-size:12.5px; color:var(--text-on-dark-soft); margin-top:4px;}
+  @media (max-width:760px){
+    .stats .wrap{grid-template-columns:repeat(2,1fr); gap:22px 0;}
+    .stat{border-left:none; padding-left:0;}
+  }
+
+  /* ============ SECTION HEADERS ============ */
+  section{padding:104px 0;}
+  .sec-head{
+    display:flex; justify-content:space-between; align-items:flex-end;
+    gap:40px; margin-bottom:56px;
+  }
+  .sec-head h2{font-size:clamp(28px,3.4vw,42px); max-width:16ch;}
+  .sec-head .sec-note{max-width:34ch; font-size:14.5px; color:var(--text-soft); padding-bottom:4px;}
+  @media (max-width:760px){ .sec-head{flex-direction:column; align-items:flex-start; gap:18px;} }
+
+  /* ============ SERVICES ============ */
+  .services{background:var(--sand);}
+  .service-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
+  }
+  @media (max-width:960px){ .service-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:620px){ .service-grid{grid-template-columns:1fr;} }
+
+  .stamp-card{
+    background:var(--cream);
+    padding:30px 26px 26px;
+    position:relative;
+    border:1px solid var(--line);
+    transition:transform .22s ease, box-shadow .22s ease;
+  }
+  .stamp-card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 22px 40px -18px rgba(16,36,27,0.28);
+  }
+  .stamp-card .code{
+    font-family:var(--mono); font-size:11px; color:var(--brass);
+    letter-spacing:0.08em; margin-bottom:18px; display:block;
+  }
+  .stamp-card h3{font-size:20px; margin-bottom:10px; line-height:1.2;}
+  .stamp-card p{font-size:14px; color:var(--text-soft); margin-bottom:20px;}
+  .stamp-card .tear{margin:0 0 16px;}
+  .stamp-card ul{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:8px;}
+  .stamp-card li{font-size:13px; color:var(--text-soft); display:flex; gap:8px;}
+  .stamp-card li::before{content:'—'; color:var(--brass); flex-shrink:0;}
+  .stamp-card .corner{
+    position:absolute; top:16px; right:16px;
+    width:30px;height:30px; border-radius:50%;
+    border:1px dashed var(--brass);
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--mono); font-size:9px; color:var(--brass);
+  }
+
+  /* ============ PROCESS ============ */
+  .process{background:var(--ink); color:var(--text-on-dark);}
+  .process .sec-head h2{color:var(--text-on-dark);}
+  .process .sec-note{color:var(--text-on-dark-soft);}
+  .process-row{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:0;
+  }
+  .process-step{
+    padding:0 20px 0 0;
+    border-right:1px solid var(--line-on-dark);
+    position:relative;
+  }
+  .process-step:last-child{border-right:none;}
+  .process-step .idx{
+    font-family:var(--mono); font-size:13px; color:var(--brass-light);
+    margin-bottom:22px; display:block;
+  }
+  .process-step h4{font-size:16.5px; color:var(--text-on-dark); margin-bottom:10px; line-height:1.25;}
+  .process-step p{font-size:13px; color:var(--text-on-dark-soft);}
+  @media (max-width:900px){
+    .process-row{grid-template-columns:1fr 1fr; gap:34px 20px;}
+    .process-step{border-right:none; padding-right:0;}
+  }
+  @media (max-width:560px){ .process-row{grid-template-columns:1fr;} }
+
+  /* ============ SPLIT (two business lines) ============ */
+  .split{background:var(--paper);}
+  .split-grid{
+    display:grid; grid-template-columns:1fr 1fr;
+    border:1px solid var(--line);
+  }
+  .split-col{padding:48px 42px; position:relative;}
+  .split-col.pilgrim{background:var(--cream);}
+  .split-col.trade{background:var(--ink); color:var(--text-on-dark);}
+  .split-col.trade h3, .split-col.trade .eyebrow{color:var(--text-on-dark);}
+  .split-col .eyebrow{margin-bottom:18px;}
+  .split-col h3{font-size:27px; margin-bottom:14px; max-width:18ch;}
+  .split-col p{font-size:14.5px; color:var(--text-soft); max-width:44ch; margin-bottom:26px;}
+  .split-col.trade p{color:var(--text-on-dark-soft);}
+  .split-divider{
+    position:absolute; left:50%; top:0; bottom:0;
+    width:0; border-left:1.5px dashed var(--brass);
+    transform:translateX(-50%);
+  }
+  .split-divider::before,.split-divider::after{
+    content:''; position:absolute; left:50%; width:14px;height:14px;
+    border-radius:50%; background:var(--paper); transform:translateX(-50%);
+  }
+  .split-divider::before{top:-7px;}
+  .split-divider::after{bottom:-7px;}
+  @media (max-width:820px){
+    .split-grid{grid-template-columns:1fr;}
+    .split-divider{display:none;}
+  }
+
+  /* ============ CONTACT ============ */
+  .contact{background:var(--sand);}
+  .contact-grid{
+    display:grid; grid-template-columns:1fr 1.05fr; gap:60px;
+  }
+  .contact-info h2{font-size:clamp(28px,3.2vw,40px); margin-bottom:18px; max-width:14ch;}
+  .contact-info > p{font-size:15px; color:var(--text-soft); max-width:42ch; margin-bottom:36px;}
+  .contact-line{
+    display:flex; gap:16px; padding:16px 0; border-top:1px solid var(--line);
+    font-size:14.5px;
+  }
+  .contact-line:last-of-type{border-bottom:1px solid var(--line);}
+  .contact-line .k{font-family:var(--mono); font-size:11px; text-transform:uppercase; color:var(--brass); width:110px; flex-shrink:0; letter-spacing:0.06em; padding-top:2px;}
+  .contact-line a{text-decoration:none;}
+  .contact-line a:hover{color:var(--emerald);}
+
+  form.quote{
+    background:var(--cream); border:1px solid var(--line);
+    padding:34px 30px;
+  }
+  form.quote .eyebrow{margin-bottom:8px;}
+  form.quote h3{font-size:21px; margin-bottom:24px;}
+  .field-row{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;}
+  .field{display:flex; flex-direction:column; gap:6px;}
+  .field.full{grid-column:1/-1;}
+  .field label{font-family:var(--mono); font-size:10.5px; text-transform:uppercase; letter-spacing:0.06em; color:var(--text-soft);}
+  .field input, .field select, .field textarea{
+    font-family:var(--body); font-size:14px; color:var(--text);
+    background:var(--paper); border:1px solid var(--line);
+    border-radius:var(--radius); padding:11px 12px;
+    resize:vertical;
+  }
+  .field input:focus, .field select:focus, .field textarea:focus{border-color:var(--brass);}
+  form.quote .btn{width:100%; justify-content:center; margin-top:6px;}
+  @media (max-width:820px){ .contact-grid{grid-template-columns:1fr;} .field-row{grid-template-columns:1fr;} }
+
+  /* ============ FOOTER ============ */
+  footer{background:var(--ink); color:var(--text-on-dark-soft); padding:50px 0 30px;}
+  .foot-top{
+    display:flex; justify-content:space-between; align-items:flex-start;
+    gap:40px; padding-bottom:36px; border-bottom:1px solid var(--line-on-dark);
+    flex-wrap:wrap;
+  }
+  .foot-cols{display:flex; gap:60px; flex-wrap:wrap;}
+  .foot-col h5{
+    font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:0.08em;
+    color:var(--brass-light); margin-bottom:14px; font-weight:500;
+  }
+  .foot-col ul{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:9px;}
+  .foot-col a{color:var(--text-on-dark-soft); text-decoration:none; font-size:13.5px;}
+  .foot-col a:hover{color:var(--brass-light);}
+  .foot-bottom{
+    display:flex; justify-content:space-between; padding-top:24px;
+    font-size:12.5px; flex-wrap:wrap; gap:10px;
+  }
+  .foot-bottom .mono{font-family:var(--mono); font-size:11px;}
+
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header>
+  <nav class="wrap">
+    <a href="#top" class="logo">
+      <span class="logo-mark">AM</span>
+      <span>Al Manar Group<span class="logo-sub">Travel · Pilgrimage · Trade</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#umrah">Umrah</a></li>
+      <li><a href="#process">How it works</a></li>
+      <li><a href="#trade">Documentation &amp; Trade</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="#contact" class="btn btn-ghost-dark">Request a quote</a>
+    </div>
+  </nav>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <svg class="hero-route" viewBox="0 0 1200 500" preserveAspectRatio="none">
+    <path d="M -50 380 C 200 300, 350 420, 520 340 S 820 200, 1000 260 S 1250 180, 1300 120"></path>
+    <circle cx="200" cy="330" r="3"></circle>
+    <circle cx="520" cy="340" r="3"></circle>
+    <circle cx="820" cy="200" r="3"></circle>
+    <circle cx="1000" cy="260" r="3"></circle>
+  </svg>
+
+  <div class="wrap hero-inner">
+    <div>
+      <span class="eyebrow">Umrah · Tours · Documentation · Import &amp; Export</span>
+      <h1>Every journey — <em>and every shipment</em> — properly arranged.</h1>
+      <p class="lede">One company handling your pilgrimage to the Haramain, your hotel and tour bookings across Saudi Arabia and abroad, and the paperwork that moves goods across borders. Booked, stamped, and confirmed.</p>
+      <div class="hero-actions">
+        <a href="#umrah" class="btn btn-primary">Plan an Umrah package</a>
+        <a href="#trade" class="btn btn-ghost-dark">Documentation &amp; trade services</a>
+      </div>
+    </div>
+
+    <div class="hero-manifest reveal is-visible">
+      <div class="manifest-row">
+        <span>Service Manifest</span>
+        <span>No. AM-0142</span>
+      </div>
+      <div class="manifest-title">Makkah — Madinah</div>
+      <div class="manifest-sub">Umrah &amp; Hotel Package, Group of 4</div>
+      <div class="manifest-grid">
+        <div><span class="k">Departure</span>Your City</div>
+        <div><span class="k">Route</span>Direct / Via Jeddah</div>
+        <div><span class="k">Stay</span>Makkah + Madinah</div>
+        <div><span class="k">Status</span>Confirmed</div>
+      </div>
+      <div class="manifest-seal">VERIFIED<br>DOCS</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STATS ============ -->
+<section class="stats">
+  <div class="wrap">
+    <div class="stat"><div class="num">--+</div><div class="label">Years arranging travel &amp; trade</div></div>
+    <div class="stat"><div class="num">--+</div><div class="label">Pilgrims &amp; travellers served</div></div>
+    <div class="stat"><div class="num">--+</div><div class="label">Countries covered for tours &amp; cargo</div></div>
+    <div class="stat"><div class="num">24/7</div><div class="label">Support during travel &amp; transit</div></div>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2>Six services, one desk to call.</h2>
+      <p class="sec-note">Whether you're travelling for pilgrimage, leisure, or moving cargo across a border — it's handled under one roof, with one point of contact.</p>
+    </div>
+
+    <div class="service-grid">
+
+      <div class="stamp-card reveal">
+        <span class="corner">01</span>
+        <span class="code">SVC / UMRAH</span>
+        <h3>Umrah Packages</h3>
+        <div class="tear"></div>
+        <p>Economy to VIP packages covering visa, flights, ziyarat, and guided support in the Haramain.</p>
+        <ul>
+          <li>Visa &amp; documentation handled</li>
+          <li>Group and family packages</li>
+          <li>English &amp; Arabic-speaking guides</li>
+        </ul>
+      </div>
+
+      <div class="stamp-card reveal">
+        <span class="corner">02</span>
+        <span class="code">SVC / HOTELS</span>
+        <h3>Hotel Packages</h3>
+        <div class="tear"></div>
+        <p>Negotiated rates at hotels near Masjid al-Haram and Masjid an-Nabawi, and across tour destinations.</p>
+        <ul>
+          <li>Haram-facing &amp; budget options</li>
+          <li>Block bookings for groups</li>
+          <li>Transfers included on request</li>
+        </ul>
+      </div>
+
+      <div class="stamp-card reveal" id="umrah">
+        <span class="corner">03</span>
+        <span class="code">SVC / SAUDI</span>
+        <h3>Saudi Tours</h3>
+        <div class="tear"></div>
+        <p>Riyadh, Jeddah, AlUla, Taif and the Red Sea coast — planned around your pilgrimage or as standalone trips.</p>
+        <ul>
+          <li>Custom itineraries</li>
+          <li>Licensed local transport</li>
+          <li>Historic &amp; heritage-site access</li>
+        </ul>
+      </div>
+
+      <div class="stamp-card reveal">
+        <span class="corner">04</span>
+        <span class="code">SVC / WORLD</span>
+        <h3>World Tours</h3>
+        <div class="tear"></div>
+        <p>Leisure and business travel packages beyond Saudi Arabia — flights, stays, and ground arrangements.</p>
+        <ul>
+          <li>Multi-country itineraries</li>
+          <li>Visa assistance</li>
+          <li>Corporate travel arrangements</li>
+        </ul>
+      </div>
+
+      <div class="stamp-card reveal" id="trade">
+        <span class="corner">05</span>
+        <span class="code">SVC / DOCS</span>
+        <h3>Documentation Services</h3>
+        <div class="tear"></div>
+        <p>Visa filing, attestation, certification and travel paperwork prepared and verified before you fly.</p>
+        <ul>
+          <li>Visa &amp; passport documentation</li>
+          <li>Certificate attestation</li>
+          <li>Corporate travel documents</li>
+        </ul>
+      </div>
+
+      <div class="stamp-card reveal">
+        <span class="corner">06</span>
+        <span class="code">SVC / TRADE</span>
+        <h3>Import &amp; Export</h3>
+        <div class="tear"></div>
+        <p>Customs documentation, shipping coordination and clearance support for import and export consignments.</p>
+        <ul>
+          <li>Customs &amp; clearance paperwork</li>
+          <li>Freight coordination</li>
+          <li>Compliance &amp; permit filing</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROCESS ============ -->
+<section class="process" id="process">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2>How a booking moves through our desk</h2>
+      <p class="sec-note">The same five stages apply whether it's a pilgrimage group or an export shipment.</p>
+    </div>
+    <div class="process-row">
+      <div class="process-step reveal">
+        <span class="idx">01</span>
+        <h4>Consultation</h4>
+        <p>We scope the trip or shipment — dates, group size, destination, and any documentation already in hand.</p>
+      </div>
+      <div class="process-step reveal">
+        <span class="idx">02</span>
+        <h4>Documentation</h4>
+        <p>Visas, attestations, permits, or customs paperwork are prepared and verified before anything is booked.</p>
+      </div>
+      <div class="process-step reveal">
+        <span class="idx">03</span>
+        <h4>Booking</h4>
+        <p>Flights, hotels, transport, or freight are confirmed and a manifest is issued with your reference number.</p>
+      </div>
+      <div class="process-step reveal">
+        <span class="idx">04</span>
+        <h4>Travel / Transit</h4>
+        <p>Your group travels or your goods move, with our team tracking progress and handling any changes.</p>
+      </div>
+      <div class="process-step reveal">
+        <span class="idx">05</span>
+        <h4>Support</h4>
+        <p>On-ground and after-hours support until the trip ends or the shipment clears at destination.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SPLIT ============ -->
+<section class="split">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2>Two sides of the same desk</h2>
+      <p class="sec-note">Pilgrimage and tourism on one side, trade documentation and logistics on the other — run by the same team.</p>
+    </div>
+    <div class="split-grid reveal">
+      <div class="split-col pilgrim">
+        <span class="eyebrow">Pilgrimage &amp; Tourism</span>
+        <h3>For travellers and pilgrims</h3>
+        <p>Umrah packages, Haram-area hotels, and tours across Saudi Arabia and abroad — planned end to end, with visa and documentation support built in.</p>
+        <a href="#services" class="btn btn-ghost-light">See travel services</a>
+      </div>
+      <div class="split-divider"></div>
+      <div class="split-col trade">
+        <span class="eyebrow">Trade &amp; Logistics</span>
+        <h3>For importers and exporters</h3>
+        <p>Customs documentation, certification, and freight coordination for consignments moving in or out — filed correctly the first time.</p>
+        <a href="#contact" class="btn btn-ghost-dark">Discuss a shipment</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="contact" id="contact">
+  <div class="wrap contact-grid">
+    <div class="contact-info reveal">
+      <span class="eyebrow">Get in touch</span>
+      <h2>Tell us what you're arranging.</h2>
+      <p>Umrah for a family, hotels for a group, a tour itinerary, or paperwork for a shipment — send the details and we'll respond with options and pricing.</p>
+
+      <div class="contact-line">
+        <span class="k">Phone</span>
+        <a href="tel:+000000000">+00 000 000 0000</a>
+      </div>
+      <div class="contact-line">
+        <span class="k">WhatsApp</span>
+        <a href="https://wa.me/000000000000" target="_blank" rel="noopener">+00 000 000 0000</a>
+      </div>
+      <div class="contact-line">
+        <span class="k">Email</span>
+        <a href="mailto:info@yourcompany.com">info@yourcompany.com</a>
+      </div>
+      <div class="contact-line">
+        <span class="k">Office</span>
+        <span>Your City, Your Country</span>
+      </div>
+    </div>
+
+    <form class="quote reveal" onsubmit="return false;">
+      <span class="eyebrow">Request a quote</span>
+      <h3>Start a booking or enquiry</h3>
+      <div class="field-row">
+        <div class="field">
+          <label for="name">Full name</label>
+          <input id="name" type="text" placeholder="Your name" required>
+        </div>
+        <div class="field">
+          <label for="phone">Phone / WhatsApp</label>
+          <input id="phone" type="tel" placeholder="+00 000 000 0000" required>
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field full">
+          <label for="service">Service needed</label>
+          <select id="service">
+            <option>Umrah Package</option>
+            <option>Hotel Package</option>
+            <option>Saudi Tour</option>
+            <option>World Tour</option>
+            <option>Documentation Services</option>
+            <option>Import / Export</option>
+          </select>
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field full">
+          <label for="message">Details</label>
+          <textarea id="message" rows="4" placeholder="Group size, dates, destination, or shipment details"></textarea>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Send enquiry</button>
+    </form>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <a href="#top" class="logo" style="margin-bottom:14px;">
+          <span class="logo-mark">AM</span>
+          <span>Al Manar Group</span>
+        </a>
+        <p style="max-width:32ch; font-size:13.5px; color:var(--text-on-dark-soft);">Umrah, hotels, tours, documentation and import/export — arranged from one desk.</p>
+      </div>
+      <div class="foot-cols">
+        <div class="foot-col">
+          <h5>Travel</h5>
+          <ul>
+            <li><a href="#services">Umrah Packages</a></li>
+            <li><a href="#services">Hotel Packages</a></li>
+            <li><a href="#services">Saudi Tours</a></li>
+            <li><a href="#services">World Tours</a></li>
+          </ul>
+        </div>
+        <div class="foot-col">
+          <h5>Trade</h5>
+          <ul>
+            <li><a href="#trade">Documentation Services</a></li>
+            <li><a href="#trade">Import &amp; Export</a></li>
+          </ul>
+        </div>
+        <div class="foot-col">
+          <h5>Company</h5>
+          <ul>
+            <li><a href="#process">How it works</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="year"></span> Al Manar Group. All rights reserved.</span>
+      <span class="mono">MANIFEST NO. AM-0142</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
